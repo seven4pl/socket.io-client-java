@@ -10,6 +10,8 @@ import org.json.JSONObject;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ConcurrentHashMap;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -59,7 +61,7 @@ public class Socket extends Emitter {
     private String nsp;
     private Manager io;
     private Map<String, String> auth;
-    private Map<Integer, Ack> acks = new HashMap<>();
+    private Map<Integer, Ack> acks = new ConcurrentHashMap<>();
     private Queue<On.Handle> subs;
     private final Queue<List<Object>> receiveBuffer = new ConcurrentLinkedQueue<>();
     private final Queue<Packet<JSONArray>> sendBuffer = new ConcurrentLinkedQueue<>();
